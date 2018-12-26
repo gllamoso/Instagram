@@ -3,7 +3,7 @@ package scripts;
 import selenium.Selenium;
 import selenium.Selenium.Browser;
 import instagram.Instagram;
-import instagram.tagged_search.HashtagSearch;
+import instagram.hashtag_search.HashtagSearch;
 
 public class UnitTest {
 	

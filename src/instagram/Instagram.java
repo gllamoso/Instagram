@@ -2,7 +2,7 @@ package instagram;
 
 import org.openqa.selenium.By;
 
-import instagram.tagged_search.HashtagSearch;
+import instagram.hashtag_search.HashtagSearch;
 import selenium.Selenium;
 import selenium.Selenium.Browser;
 

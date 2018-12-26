@@ -1,4 +1,4 @@
-package instagram.tagged_search;
+package instagram.hashtag_search;
 
 import org.openqa.selenium.By;
 
