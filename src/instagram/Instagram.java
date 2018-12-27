@@ -8,9 +8,14 @@ import selenium.Selenium.Browser;
 
 public class Instagram {
 	private static HashtagSearch hashtagSearch = new HashtagSearch();
+	private static Selectors selectors = new Selectors();
 	//---------------------------------------------------------------------------------------------
 	public static HashtagSearch hashtagSearch(){
 		return hashtagSearch;
+	}
+	//---------------------------------------------------------------------------------------------
+	public static Selectors selectors(){
+		return selectors;
 	}
 	//---------------------------------------------------------------------------------------------
 	public static void start(Browser browser){
@@ -20,11 +25,11 @@ public class Instagram {
 	}
 	//---------------------------------------------------------------------------------------------
 	public static void login(String username, String password){
-		Selenium.set(Selectors.username(), username);
-		Selenium.set(Selectors.password(), password);
-		Selenium.click(Selectors.login());
-		if(Selenium.exists(Selectors.loginErrorAlert())){
-			Selenium.stop("FAILURE: Unable to log in: " + Selenium.fetchText(Selectors.loginErrorAlert()));
+		Selenium.set(selectors.username(), username);
+		Selenium.set(selectors.password(), password);
+		Selenium.click(selectors.login());
+		if(Selenium.exists(selectors.loginErrorAlert())){
+			Selenium.stop("FAILURE: Unable to log in: " + Selenium.fetchText(selectors.loginErrorAlert()));
 		}
 		else{
 			Selenium.result("Logged in as " + username);
@@ -32,39 +37,39 @@ public class Instagram {
 	}
 	//---------------------------------------------------------------------------------------------
 	public static void dismissNotificationsPopup(){
-		if(Selenium.exists(Selectors.dialogBox())){
-			String dialogText = Selenium.fetchText(Selectors.dialogHeader());
-			Selenium.click(Selectors.notNowButton());
+		if(Selenium.exists(selectors.dialogBox())){
+			String dialogText = Selenium.fetchText(selectors.dialogHeader());
+			Selenium.click(selectors.notNowButton());
 			Selenium.result(dialogText + ": Not Now");
 		}
 	}
 	//---------------------------------------------------------------------------------------------
 	public static void search(String input){
-		Selenium.set(Selectors.searchBar(), input, "Search Bar");
+		Selenium.set(selectors.searchBar(), input, "Search Bar");
 		Selenium.wait(2);
-		String firstSearchResult = Selenium.fetchText(Selectors.searchResultName(1));
-		Selenium.click(Selectors.searchResult(1), "first search result: " + firstSearchResult);
+		String firstSearchResult = Selenium.fetchText(selectors.searchResultName(1));
+		Selenium.click(selectors.searchResult(1), "first search result: " + firstSearchResult);
 		Selenium.wait(5);
 	}
 	//---------------------------------------------------------------------------------------------
 	
 	//=============================================================================================
-	public static class Selectors{
+	private static class Selectors{
 		// Login Page
-		public static By username(){ return By.xpath("//input[@name='username']"); }
-		public static By password(){ return By.xpath("//input[@name='password']"); }
-		public static By login(){ return By.xpath("//button[text()='Log in']"); }
-		public static By loginErrorAlert() { return By.xpath("//p[@id='slfErrorAlert']"); }
+		public By username(){ return By.xpath("//input[@name='username']"); }
+		public By password(){ return By.xpath("//input[@name='password']"); }
+		public By login(){ return By.xpath("//button[text()='Log in']"); }
+		public By loginErrorAlert() { return By.xpath("//p[@id='slfErrorAlert']"); }
 		
 		// Dialog Box
-		public static By dialogBox(){ return By.xpath("//div[@role='dialog']"); }
-		public static By dialogHeader(){ return By.xpath("//div[@role='dialog']//h2"); }
-		public static By notNowButton(){ return By.xpath("//button[text()='Not Now']"); }
+		public By dialogBox(){ return By.xpath("//div[@role='dialog']"); }
+		public By dialogHeader(){ return By.xpath("//div[@role='dialog']//h2"); }
+		public By notNowButton(){ return By.xpath("//button[text()='Not Now']"); }
 		
 		// Search
-		public static By searchBar(){ return By.xpath("//input[@placeholder='Search']"); }
-		public static By searchResult(int index){ return By.xpath("//input[@placeholder='Search']/following-sibling::div//a[" + index + "]"); }
-		public static By searchResultName(int index){ return By.xpath("(//input[@placeholder='Search']/following-sibling::div//a[" + index + "]//span)[2]"); }
+		public By searchBar(){ return By.xpath("//input[@placeholder='Search']"); }
+		public By searchResult(int index){ return By.xpath("//input[@placeholder='Search']/following-sibling::div//a[" + index + "]"); }
+		public By searchResultName(int index){ return By.xpath("(//input[@placeholder='Search']/following-sibling::div//a[" + index + "]//span)[2]"); }
 		
 	}
 	//=============================================================================================
