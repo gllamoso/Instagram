@@ -3,7 +3,6 @@ package scripts;
 import selenium.Selenium;
 import selenium.Selenium.Browser;
 import instagram.Instagram;
-import instagram.hashtag_search.HashtagSearch;
 
 public class UnitTest {
 	
@@ -14,16 +13,16 @@ public class UnitTest {
 		Instagram.dismissNotificationsPopup();
 		Instagram.search("#travel");
 		
-		Instagram.hashtagSearch().clickPic(2);
+		Instagram.hashtagSearch().clickPic(3);
 		Selenium.wait(3);
 		Instagram.hashtagSearch().picSelected().clickLike();
-		Selenium.wait(1);
+		Selenium.screenshotWhenElementIsVisible(Instagram.hashtagSearch().picSelected().selectors().unlikeButton(), "1. Like");
 		Instagram.hashtagSearch().picSelected().clickUnlike();
-		Selenium.wait(1);
 		Instagram.hashtagSearch().picSelected().clickFollow();
-		Selenium.wait(1);
+		Selenium.screenshotWhenElementIsVisible(Instagram.hashtagSearch().picSelected().selectors().followingButton(), "2. Follow");
 		Instagram.hashtagSearch().picSelected().unfollow();
 		
+		Selenium.screenshotWhenElementIsVisible(Instagram.hashtagSearch().picSelected().selectors().followButton(), "3. End");
 		Selenium.stop("PASSED: Unit Test");
 	}
 }
