@@ -14,29 +14,29 @@ public class PicSelected {
 	//---------------------------------------------------------------------------------------------
 	public void clickLike(){
 		Selenium.click(Selectors.likeButton());
-		System.out.println("Liked picture of " + profileName);
+		Selenium.result("Liked picture of " + profileName);
 	}
 	//---------------------------------------------------------------------------------------------
 	public void clickUnlike(){
 		Selenium.click(Selectors.unlikeButton());
-		System.out.println("Unliked picture of " + profileName);
+		Selenium.result("Unliked picture of " + profileName);
 	}
 	//---------------------------------------------------------------------------------------------
 	public void clickFollow(){
 		Selenium.click(Selectors.followButton());
-		System.out.println("Followed " + profileName);
+		Selenium.result("Followed " + profileName);
 	}
 	//---------------------------------------------------------------------------------------------
 	public void clickClose(){
 		Selenium.click(Selectors.closeButton());
-		System.out.println("Closed picture of " + profileName);
+		Selenium.result("Closed picture of " + profileName);
 	}
 	//---------------------------------------------------------------------------------------------
 	public void unfollow(){
 		Selenium.click(Selectors.followingButton());
 		Selenium.waitForSelector(Selectors.unfollowButton());
 		Selenium.click(Selectors.unfollowButton());
-		System.out.println("Unfollowed " + profileName);
+		Selenium.result("Unfollowed " + profileName);
 	}
 	//---------------------------------------------------------------------------------------------
 	//=============================================================================================

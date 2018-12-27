@@ -24,11 +24,10 @@ public class Instagram {
 		Selenium.set(Selectors.password(), password);
 		Selenium.click(Selectors.login());
 		if(Selenium.exists(Selectors.loginErrorAlert())){
-			System.out.println("Error logging in: " + Selenium.fetchText(Selectors.loginErrorAlert()));
-			Selenium.stop();
+			Selenium.stop("FAILURE: Unable to log in: " + Selenium.fetchText(Selectors.loginErrorAlert()));
 		}
 		else{
-			System.out.println("Successfully logged in: " + username);
+			Selenium.result("Logged in as " + username);
 		}
 	}
 	//---------------------------------------------------------------------------------------------
@@ -36,17 +35,15 @@ public class Instagram {
 		if(Selenium.exists(Selectors.dialogBox())){
 			String dialogText = Selenium.fetchText(Selectors.dialogHeader());
 			Selenium.click(Selectors.notNowButton());
-			System.out.println(dialogText + ": Not Now");
+			Selenium.result(dialogText + ": Not Now");
 		}
 	}
 	//---------------------------------------------------------------------------------------------
 	public static void search(String input){
-		Selenium.set(Selectors.searchBar(), input);
+		Selenium.set(Selectors.searchBar(), input, "Search Bar");
 		Selenium.wait(2);
 		String firstSearchResult = Selenium.fetchText(Selectors.searchResultName(1));
-		Selenium.click(Selectors.searchResult(1));
-		System.out.println("Search: " + input);
-		System.out.println("Clicked on first search result: " + firstSearchResult);
+		Selenium.click(Selectors.searchResult(1), "first search result: " + firstSearchResult);
 		Selenium.wait(5);
 	}
 	//---------------------------------------------------------------------------------------------

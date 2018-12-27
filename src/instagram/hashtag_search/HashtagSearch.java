@@ -13,10 +13,9 @@ public class HashtagSearch {
 	}
 	//---------------------------------------------------------------------------------------------
 	public void clickPic(int index){
-		Selenium.click(Selectors.pic(index));
+		Selenium.click(Selectors.pic(index), "picture #" + index);
 		Selenium.waitForSelector(Selectors.picDialogBox());
-		System.out.println("Picture #" + index + " clicked");
-		picSelected.setUsername("@" + Selenium.fetchText(Selectors.userButton()));
+		picSelected.setUsername(Selenium.fetchText(Selectors.userButton()));
 	}
 	//---------------------------------------------------------------------------------------------
 	//=============================================================================================

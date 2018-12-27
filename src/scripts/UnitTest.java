@@ -17,13 +17,13 @@ public class UnitTest {
 		Instagram.hashtagSearch().clickPic(2);
 		Selenium.wait(3);
 		Instagram.hashtagSearch().picSelected().clickLike();
-		Selenium.wait(3);
+		Selenium.wait(1);
 		Instagram.hashtagSearch().picSelected().clickUnlike();
-		Selenium.wait(3);
+		Selenium.wait(1);
 		Instagram.hashtagSearch().picSelected().clickFollow();
-		Selenium.wait(3);
+		Selenium.wait(1);
 		Instagram.hashtagSearch().picSelected().unfollow();
 		
-//		Selenium.stop();
+		Selenium.stop("PASSED: Unit Test");
 	}
 }
