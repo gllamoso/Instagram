@@ -42,6 +42,9 @@ public class Instagram {
 			Selenium.click(selectors.notNowButton());
 			Selenium.result(dialogText + ": Not Now");
 		}
+		else{
+			Selenium.log("No popup found");
+		}
 	}
 	//---------------------------------------------------------------------------------------------
 	public static void search(String input){
@@ -58,7 +61,7 @@ public class Instagram {
 		// Login Page
 		public By username(){ return By.xpath("//input[@name='username']"); }
 		public By password(){ return By.xpath("//input[@name='password']"); }
-		public By login(){ return By.xpath("//button[text()='Log in']"); }
+		public By login(){ return By.xpath("//button[string()='Log in']"); }
 		public By loginErrorAlert() { return By.xpath("//p[@id='slfErrorAlert']"); }
 		
 		// Dialog Box
