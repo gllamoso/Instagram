@@ -1,0 +1,15 @@
+1. Open Task Scheduler
+2. Action > Create Task...
+3. Enter name:
+	Example: Name - "Run Instagram Selenium script"
+4. Triggers > New...
+5. Enter the settings:
+	One time
+	Repeat task every: 5 minutes
+	Enabled
+6. Actions > New...
+7. Enter the following information:
+	Action: Start a program
+	Program/script: Browse and find Instagram\runner.bat. Example: "C:\Git\Instagra\runner.bat"
+	Click OK
+8. Click OK
