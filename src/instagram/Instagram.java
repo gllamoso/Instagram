@@ -27,6 +27,7 @@ public class Instagram {
 	public static void login(String username, String password){
 		Selenium.set(selectors.username(), username);
 		Selenium.set(selectors.password(), password);
+		Selenium.wait(1);
 		Selenium.click(selectors.login());
 		if(Selenium.exists(selectors.loginErrorAlert())){
 			Selenium.stop("FAILURE: Unable to log in: " + Selenium.fetchText(selectors.loginErrorAlert()));
